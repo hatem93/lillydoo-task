@@ -1,6 +1,6 @@
 # LILLYDOO TASK
 
-This Repo is the implementation for the following task for the position : "Address book for LILLYDOO"
+This Repo is the implementation for the following task : "Address book for LILLYDOO"
 
 The main requirements where to implement the following in php.
 
@@ -86,10 +86,20 @@ I am using SQLite as required the database name is lillydo-addressbook.sqlite
 ./bin/console doctrine:fixtures:load --no-interaction
 ```
 
+To rebuild the frontend run the following commands.
+
+I am using webpack so you will need NodeJS installed
+mine was v10.19.0  on a MACOS machine, you will also need yarn for encore.
+
+```sh
+npm install
+yarn encore dev 
+```
+
 ### Testing
 I have created a single test case to cover the full scenario (show, creation, edit).
 
-To Run the tests
+To Run the tests (Note that running tests will remove all the entries in the DB)
 ```sh
 ./vendor/bin/simple-phpunit
 ```
@@ -116,3 +126,5 @@ MIT
    [PHP]: <http://php.net/>
    [Bootsrap4]: <https://getbootstrap.com/>
    [Webpack]: <https://webpack.js.org/>
+   [yarn]: <https://yarnpkg.com/>
+   [NodeJS]: <https://nodejs.org/en/>

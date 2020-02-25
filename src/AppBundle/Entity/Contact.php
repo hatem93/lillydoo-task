@@ -62,22 +62,22 @@ class Contact
     private $phoneNumber;
 
     /**
+     * @var string A "Y-m-d" formatted value
      * @Assert\NotBlank
+     * @Assert\Date
      * @ORM\Column(type="string", length=100)
      */
     private $birthday;
 
     /**
-     * @Assert\NotBlank|Email(
-     *     message = "The email '{{ value }}' is not a valid email."
+     * @Assert\NotBlank
+     * @Assert\Email(message = "The email '{{ value }}' is not a valid email.")
      * @ORM\Column(type="string", length=100)
      */
     private $emailAddress;
 
     /**
-     * @Assert\Url(
-     *    message = "The url '{{ value }}' is not a valid url",
-     * )
+     * @Assert\Url(message = "The url '{{ value }}' is not a valid url")
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $picture;

@@ -88,8 +88,8 @@ I am using SQLite as required the database name is lillydo-addressbook.sqlite
 
 To rebuild the frontend run the following commands.
 
-I am using webpack so you will need NodeJS installed
-mine was v10.19.0  on a MACOS machine, you will also need yarn for encore.
+I am using webpack so you will need [NodeJS] installed
+mine was v10.19.0  on a MACOS machine, you will also need [yarn] for encore.
 
 ```sh
 npm install

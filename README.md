@@ -1,72 +1,118 @@
-Symfony Standard Edition
-========================
+# LILLYDOO TASK
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+This Repo is the implementation for the following task for the position : "Address book for LILLYDOO"
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+The main requirements where to implement the following in php.
 
-What's inside?
---------------
+Develop an address book in which you can add, edit and delete entries. You should also have an overview of all contacts.
 
-The Symfony Standard Edition is configured with the following defaults:
+Address Book contain the following data
+  - Firstname
+  - Lastname
+  - Street and number
+  - Zip
+  - City
+  - Country
+  - Phonenumber
+  - Birthday
+  - Email address
+  - Picture (optional)
 
-  * An AppBundle you can use to start coding;
+The bonus features that I implemented where.
+  - Fixture file to seed in 50 contacts for easy testing
+  - Integration test for the whole scenario includes (show ,create, edit).
+  
+#  Features!
 
-  * Twig as the only configured template engine;
+  - CRUD for contants
+  - FRONTEND with gentelella admin panel for (index, show ,edit ,delete)
+  - Testing usescases for automation 
+  - 50 contacts seeded into the database through a Fixture file
 
-  * Doctrine ORM/DBAL;
 
-  * Swiftmailer;
+# Design
 
-  * Annotations enabled for everything.
+I have used the normal MVC pattern
 
-It comes pre-configured with the following bundles:
+This mainly divides it into three parts
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+- Models: the contact entity
+- Views : found in app/Resources/views (base,edit,index,new,show)
+- Controller: Contact controller in src/AppBundle/Controller 
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+The sqlite database is in app folder name lillydo-addressbook.sqlite
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+Considering the database design i have created one table.
+ - contact (firstname,lastname,address,...) etc
+ 
+Considering the frontend I have used [Gentelella] template for the dashboard view,
+I have used bootstrap 4 for the grid layout and also JQuery, I have created a webpack file to build the app.js and app.css files
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+### Tech
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+This task uses a number of open source projects to work properly:
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+* [Symfony] - Framework for developing php web applications
+* [Doctrine] - ORM for Symfony
+* [Faker] - Library that generates fake data.
+* [Fixtures] - Composer package for seeding data into the database
+* [Gentelella] - Gentelella Admin is a free to use Bootstrap admin template.
+* [Bootsrap4] - Bootstrap is an open source toolkit for developing with HTML, CSS, and JS
+* [Webpack] - Static module bundler for modern JavaScript applications.
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
 
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
+### Installation
 
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
+This Task requires [PHP] v7.2.0+ to run.
+I was running it on a Mac with Composer installed
 
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
+Install the dependencies and start the server.
 
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
+```sh
+cd project
+composer install
+php bin/console server:run
+```
+Navigate to this url to check that everything is running correctly it should redirect to the contacts page.
 
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
+```sh
+127.0.0.1:8000
+```
 
-Enjoy!
+I am using SQLite as required the database name is lillydo-addressbook.sqlite
 
-[1]:  https://symfony.com/doc/3.4/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.4/doctrine.html
-[8]:  https://symfony.com/doc/3.4/templating.html
-[9]:  https://symfony.com/doc/3.4/security.html
-[10]: https://symfony.com/doc/3.4/email.html
-[11]: https://symfony.com/doc/3.4/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
+```sh
+./bin/console doctrine:fixtures:load --no-interaction
+```
+
+### Testing
+I have created a single test case to cover the full scenario (show, creation, edit).
+
+To Run the tests
+```sh
+./vendor/bin/simple-phpunit
+```
+It should then output OK (1 test, 4 assertions)
+
+
+### Todos
+
+ - Implement more tests to cover all the scenarios.
+ - Create a docker file for easy installation
+
+License
+----
+
+MIT
+
+
+
+   [Gentelella]: <https://github.com/ColorlibHQ/gentelella>
+   [Fixtures]: <https://github.com/doctrine/data-fixtures>
+   [Faker]: <https://github.com/fzaninotto/Faker>
+   [Symfony]: <https://symfony.com/>
+   [Doctrine]: <https://www.doctrine-project.org/>
+   [PHP]: <http://php.net/>
+   [Bootsrap4]: <https://getbootstrap.com/>
+   [Webpack]: <https://webpack.js.org/>

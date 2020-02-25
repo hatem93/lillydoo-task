@@ -1,64 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Contact</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ contact.id }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ contact.firstName }}</td>
-            </tr>
-            <tr>
-                <th>Street</th>
-                <td>{{ contact.street }}</td>
-            </tr>
-            <tr>
-                <th>Zip</th>
-                <td>{{ contact.zip }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ contact.city }}</td>
-            </tr>
-            <tr>
-                <th>Country</th>
-                <td>{{ contact.country }}</td>
-            </tr>
-            <tr>
-                <th>Phonenumber</th>
-                <td>{{ contact.phoneNumber }}</td>
-            </tr>
-            <tr>
-                <th>Birthday</th>
-                <td>{{ contact.birthday }}</td>
-            </tr>
-            <tr>
-                <th>Emailaddress</th>
-                <td>{{ contact.emailAddress }}</td>
-            </tr>
-            <tr>
-                <th>Picture</th>
-                <td>{{ contact.picture }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('contact_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('contact_edit', { 'id': contact.id }) }}">Edit</a>
-        </li>
-        <li>
+    <h3>Contact Info</h3>
+    <div class="col-md-12 col-sm-12  profile_details">
+        <div class="well profile_view" style="width:40%">
+            <div class="col-sm-12">
+                <h4 class="brief"><i>{{ contact.emailAddress }}</i></h4>
+                <div class="left col-md-7 col-sm-7">
+                    <h2>{{ contact.firstName }}  {{ contact.lastName }}</h2>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-address-card"></i> Address: {{ contact.street }}</li>
+                        <li><i class="fa fa-building"></i> City: {{ contact.city }}</li>
+                        <li><i class="fa fa-flag"></i> Country: {{ contact.country }}</li>
+                        <li><i class="fa fa-envelope-open"></i> ZipCode: {{ contact.zip }}</li>
+                        <li><i class="fa fa-birthday-cake"></i> Birthday: {{ contact.birthday }}</li>
+                        <li><i class="fa fa-phone"></i> Phone #: {{ contact.phoneNumber }}</li>
+                    </ul>
+                </div>
+                <div class="right col-md-5 col-sm-5 text-center">
+                    <img src="{{ contact.picture }}" alt="" class="img-circle img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+            <button type="button" onclick = "window.location.href = '{{ path('contact_index') }}'" class="btn btn-success btn-round">
+                Back to Address Book
+            </button>
+            <button type="button" onclick = "window.location.href = '{{ path('contact_edit', { 'id': contact.id }) }}'" class="btn btn-primary btn-round">
+               Edit
+            </button>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input class="btn btn-danger btn-round" type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    </div>
 {% endblock %}
